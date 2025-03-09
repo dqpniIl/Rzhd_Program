@@ -1,0 +1,332 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище Rzhd_ProgramModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Repair">
+          <Key>
+            <PropertyRef Name="Id_Repair" />
+          </Key>
+          <Property Name="Id_Repair" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_Wagon" Type="int" Nullable="false" />
+          <Property Name="id_VidRepair" Type="int" Nullable="false" />
+          <Property Name="status_Repair" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id_User" />
+          </Key>
+          <Property Name="Id_User" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="login" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="role" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="surname" Type="nvarchar" MaxLength="150" />
+          <Property Name="name" Type="nvarchar" MaxLength="150" />
+          <Property Name="loginDate" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="VidRepair">
+          <Key>
+            <PropertyRef Name="Id_VidRepair" />
+          </Key>
+          <Property Name="Id_VidRepair" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="vid_VidRepair" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="id_VidWagon" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VidWagon">
+          <Key>
+            <PropertyRef Name="Id_VidWagon" />
+          </Key>
+          <Property Name="Id_VidWagon" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="vid_VidWagon" Type="nvarchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Wagons">
+          <Key>
+            <PropertyRef Name="Id_Wagon" />
+          </Key>
+          <Property Name="Id_Wagon" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="code_Wagon" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="id_VidWagon" Type="int" Nullable="false" />
+          <Property Name="image_Wagon" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK__Repair__id_VidRe__3E52440B">
+          <End Role="VidRepair" Type="Self.VidRepair" Multiplicity="1" />
+          <End Role="Repair" Type="Self.Repair" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VidRepair">
+              <PropertyRef Name="Id_VidRepair" />
+            </Principal>
+            <Dependent Role="Repair">
+              <PropertyRef Name="id_VidRepair" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Repair__id_Wagon__47DBAE45">
+          <End Role="Wagons" Type="Self.Wagons" Multiplicity="1" />
+          <End Role="Repair" Type="Self.Repair" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wagons">
+              <PropertyRef Name="Id_Wagon" />
+            </Principal>
+            <Dependent Role="Repair">
+              <PropertyRef Name="id_Wagon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VidRepair__id_Vi__3F466844">
+          <End Role="VidWagon" Type="Self.VidWagon" Multiplicity="1" />
+          <End Role="VidRepair" Type="Self.VidRepair" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VidWagon">
+              <PropertyRef Name="Id_VidWagon" />
+            </Principal>
+            <Dependent Role="VidRepair">
+              <PropertyRef Name="id_VidWagon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Wagons__id_VidWa__403A8C7D">
+          <End Role="VidWagon" Type="Self.VidWagon" Multiplicity="1" />
+          <End Role="Wagons" Type="Self.Wagons" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VidWagon">
+              <PropertyRef Name="Id_VidWagon" />
+            </Principal>
+            <Dependent Role="Wagons">
+              <PropertyRef Name="id_VidWagon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище Rzhd_ProgramModelContainer">
+          <EntitySet Name="Repair" EntityType="Self.Repair" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VidRepair" EntityType="Self.VidRepair" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VidWagon" EntityType="Self.VidWagon" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Wagons" EntityType="Self.Wagons" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Repair__id_VidRe__3E52440B" Association="Self.FK__Repair__id_VidRe__3E52440B">
+            <End Role="VidRepair" EntitySet="VidRepair" />
+            <End Role="Repair" EntitySet="Repair" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Repair__id_Wagon__47DBAE45" Association="Self.FK__Repair__id_Wagon__47DBAE45">
+            <End Role="Wagons" EntitySet="Wagons" />
+            <End Role="Repair" EntitySet="Repair" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VidRepair__id_Vi__3F466844" Association="Self.FK__VidRepair__id_Vi__3F466844">
+            <End Role="VidWagon" EntitySet="VidWagon" />
+            <End Role="VidRepair" EntitySet="VidRepair" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Wagons__id_VidWa__403A8C7D" Association="Self.FK__Wagons__id_VidWa__403A8C7D">
+            <End Role="VidWagon" EntitySet="VidWagon" />
+            <End Role="Wagons" EntitySet="Wagons" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Rzhd_ProgramModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Repair">
+          <Key>
+            <PropertyRef Name="Id_Repair" />
+          </Key>
+          <Property Name="Id_Repair" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_Wagon" Type="Int32" Nullable="false" />
+          <Property Name="id_VidRepair" Type="Int32" Nullable="false" />
+          <Property Name="status_Repair" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="VidRepair" Relationship="Self.FK__Repair__id_VidRe__3E52440B" FromRole="Repair" ToRole="VidRepair" />
+          <NavigationProperty Name="Wagons" Relationship="Self.FK__Repair__id_Wagon__47DBAE45" FromRole="Repair" ToRole="Wagons" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id_User" />
+          </Key>
+          <Property Name="Id_User" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="login" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="role" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="surname" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="loginDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="VidRepair">
+          <Key>
+            <PropertyRef Name="Id_VidRepair" />
+          </Key>
+          <Property Name="Id_VidRepair" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="vid_VidRepair" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id_VidWagon" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Repair" Relationship="Self.FK__Repair__id_VidRe__3E52440B" FromRole="VidRepair" ToRole="Repair" />
+          <NavigationProperty Name="VidWagon" Relationship="Self.FK__VidRepair__id_Vi__3F466844" FromRole="VidRepair" ToRole="VidWagon" />
+        </EntityType>
+        <EntityType Name="VidWagon">
+          <Key>
+            <PropertyRef Name="Id_VidWagon" />
+          </Key>
+          <Property Name="Id_VidWagon" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="vid_VidWagon" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="VidRepair" Relationship="Self.FK__VidRepair__id_Vi__3F466844" FromRole="VidWagon" ToRole="VidRepair" />
+          <NavigationProperty Name="Wagons" Relationship="Self.FK__Wagons__id_VidWa__403A8C7D" FromRole="VidWagon" ToRole="Wagons" />
+        </EntityType>
+        <EntityType Name="Wagons">
+          <Key>
+            <PropertyRef Name="Id_Wagon" />
+          </Key>
+          <Property Name="Id_Wagon" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="code_Wagon" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id_VidWagon" Type="Int32" Nullable="false" />
+          <Property Name="image_Wagon" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Repair" Relationship="Self.FK__Repair__id_Wagon__47DBAE45" FromRole="Wagons" ToRole="Repair" />
+          <NavigationProperty Name="VidWagon" Relationship="Self.FK__Wagons__id_VidWa__403A8C7D" FromRole="Wagons" ToRole="VidWagon" />
+        </EntityType>
+        <Association Name="FK__Repair__id_VidRe__3E52440B">
+          <End Role="VidRepair" Type="Self.VidRepair" Multiplicity="1" />
+          <End Role="Repair" Type="Self.Repair" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VidRepair">
+              <PropertyRef Name="Id_VidRepair" />
+            </Principal>
+            <Dependent Role="Repair">
+              <PropertyRef Name="id_VidRepair" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Repair__id_Wagon__47DBAE45">
+          <End Role="Wagons" Type="Self.Wagons" Multiplicity="1" />
+          <End Role="Repair" Type="Self.Repair" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wagons">
+              <PropertyRef Name="Id_Wagon" />
+            </Principal>
+            <Dependent Role="Repair">
+              <PropertyRef Name="id_Wagon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VidRepair__id_Vi__3F466844">
+          <End Role="VidWagon" Type="Self.VidWagon" Multiplicity="1" />
+          <End Role="VidRepair" Type="Self.VidRepair" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VidWagon">
+              <PropertyRef Name="Id_VidWagon" />
+            </Principal>
+            <Dependent Role="VidRepair">
+              <PropertyRef Name="id_VidWagon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Wagons__id_VidWa__403A8C7D">
+          <End Role="VidWagon" Type="Self.VidWagon" Multiplicity="1" />
+          <End Role="Wagons" Type="Self.Wagons" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VidWagon">
+              <PropertyRef Name="Id_VidWagon" />
+            </Principal>
+            <Dependent Role="Wagons">
+              <PropertyRef Name="id_VidWagon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Repair" EntityType="Self.Repair" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <EntitySet Name="VidRepair" EntityType="Self.VidRepair" />
+          <EntitySet Name="VidWagon" EntityType="Self.VidWagon" />
+          <EntitySet Name="Wagons" EntityType="Self.Wagons" />
+          <AssociationSet Name="FK__Repair__id_VidRe__3E52440B" Association="Self.FK__Repair__id_VidRe__3E52440B">
+            <End Role="VidRepair" EntitySet="VidRepair" />
+            <End Role="Repair" EntitySet="Repair" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Repair__id_Wagon__47DBAE45" Association="Self.FK__Repair__id_Wagon__47DBAE45">
+            <End Role="Wagons" EntitySet="Wagons" />
+            <End Role="Repair" EntitySet="Repair" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VidRepair__id_Vi__3F466844" Association="Self.FK__VidRepair__id_Vi__3F466844">
+            <End Role="VidWagon" EntitySet="VidWagon" />
+            <End Role="VidRepair" EntitySet="VidRepair" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Wagons__id_VidWa__403A8C7D" Association="Self.FK__Wagons__id_VidWa__403A8C7D">
+            <End Role="VidWagon" EntitySet="VidWagon" />
+            <End Role="Wagons" EntitySet="Wagons" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище Rzhd_ProgramModelContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="Repair">
+            <EntityTypeMapping TypeName="Rzhd_ProgramModel.Repair">
+              <MappingFragment StoreEntitySet="Repair">
+                <ScalarProperty Name="Id_Repair" ColumnName="Id_Repair" />
+                <ScalarProperty Name="id_Wagon" ColumnName="id_Wagon" />
+                <ScalarProperty Name="id_VidRepair" ColumnName="id_VidRepair" />
+                <ScalarProperty Name="status_Repair" ColumnName="status_Repair" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="Rzhd_ProgramModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Id_User" ColumnName="Id_User" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="role" ColumnName="role" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="loginDate" ColumnName="loginDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VidRepair">
+            <EntityTypeMapping TypeName="Rzhd_ProgramModel.VidRepair">
+              <MappingFragment StoreEntitySet="VidRepair">
+                <ScalarProperty Name="Id_VidRepair" ColumnName="Id_VidRepair" />
+                <ScalarProperty Name="vid_VidRepair" ColumnName="vid_VidRepair" />
+                <ScalarProperty Name="id_VidWagon" ColumnName="id_VidWagon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VidWagon">
+            <EntityTypeMapping TypeName="Rzhd_ProgramModel.VidWagon">
+              <MappingFragment StoreEntitySet="VidWagon">
+                <ScalarProperty Name="Id_VidWagon" ColumnName="Id_VidWagon" />
+                <ScalarProperty Name="vid_VidWagon" ColumnName="vid_VidWagon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Wagons">
+            <EntityTypeMapping TypeName="Rzhd_ProgramModel.Wagons">
+              <MappingFragment StoreEntitySet="Wagons">
+                <ScalarProperty Name="Id_Wagon" ColumnName="Id_Wagon" />
+                <ScalarProperty Name="code_Wagon" ColumnName="code_Wagon" />
+                <ScalarProperty Name="id_VidWagon" ColumnName="id_VidWagon" />
+                <ScalarProperty Name="image_Wagon" ColumnName="image_Wagon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

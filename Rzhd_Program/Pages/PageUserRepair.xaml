@@ -1,0 +1,31 @@
+﻿<Page x:Class="Rzhd_Program.Pages.PageUserRepair"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Rzhd_Program.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="650" d:DesignWidth="920"
+      Title="PageUserRepair">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45*"></RowDefinition>
+            <RowDefinition Height="377*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <DataGrid Name="dGridRepair" IsReadOnly="True" AutoGenerateColumns="False" Grid.Row="1">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Код вагона" Binding="{Binding Wagons.code_Wagon}" Width="100"></DataGridTextColumn>
+                <DataGridTextColumn Header="Ремонт" Binding="{Binding VidRepair.vid_VidRepair}" Width="543"></DataGridTextColumn>
+                <DataGridTextColumn Header="Статус ремонта" Binding="{Binding status_Repair}" Width="100"></DataGridTextColumn>
+                <DataGridTemplateColumn Width="auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Выполнить" Name="BtnEdit" Width="80" Height="40" Background="LightGray" Click="BtnPerform_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label Content="Отчетность" HorizontalAlignment="Left" VerticalAlignment="Top" Height="59" Width="228" FontSize="36" FontWeight="Bold" Margin="30,10,0,0"/>
+    </Grid>
+</Page>

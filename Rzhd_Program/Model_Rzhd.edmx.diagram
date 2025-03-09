@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="dbd37e53e2f44c74a646ad074852be77" Name="Diagram1">
+        <EntityTypeShape EntityType="Rzhd_ProgramModel.Repair" Width="1.5" PointX="5.25" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Rzhd_ProgramModel.Users" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Rzhd_ProgramModel.VidRepair" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Rzhd_ProgramModel.VidWagon" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Rzhd_ProgramModel.Wagons" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <AssociationConnector Association="Rzhd_ProgramModel.FK__Repair__id_VidRe__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="Rzhd_ProgramModel.FK__Repair__id_Wagon__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="Rzhd_ProgramModel.FK__VidRepair__id_Vi__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="Rzhd_ProgramModel.FK__Wagons__id_VidWa__403A8C7D" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,22 @@
+﻿<Page x:Class="Rzhd_Program.Pages.PageVidRepair"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Rzhd_Program.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="650" d:DesignWidth="920"
+      Title="PageVidRepair">
+
+    <Grid>
+        <Label Content="Род вагона" HorizontalAlignment="Left" Margin="69,104,0,0" VerticalAlignment="Top" Width="222" FontSize="20" Grid.Column="0"/>
+        <ComboBox Name="comboVidWagon" HorizontalAlignment="Left" Margin="69,146,0,0" VerticalAlignment="Top" Width="222" Height="40" SelectionChanged="comboVidWagon_SelectionChanged"/>
+        <Label Content="Вид ремонта вагона" HorizontalAlignment="Left" Margin="69,184,0,0" VerticalAlignment="Top" Width="222" FontSize="20" Grid.Column="0"/>
+        <TextBox Name="tbVidRepair" HorizontalAlignment="Left" Margin="69,226,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222" Height="78" FontSize="18" Grid.Column="0"/>
+        <Button Name="btnSave" Content="Сохранить" HorizontalAlignment="Left" Margin="69,318,0,0" VerticalAlignment="Top" Height="34" Width="111" FontSize="16" Grid.Column="0" Click="btnSave_Click"/>
+        <Button Name="btnDelete" Content="Удалить" HorizontalAlignment="Left" Margin="181,318,0,0" VerticalAlignment="Top" Height="34" Width="111" FontSize="16" Grid.Column="0" Click="btnDelete_Click"/>
+        <Button Name="btnClear" Content="Очистить поле" HorizontalAlignment="Left" Margin="69,356,0,0" VerticalAlignment="Top" Height="34" Width="222" FontSize="16" Click="btnClear_Click"/>
+        <Label Content="Список видов ремонта вагонов" HorizontalAlignment="Left" Margin="368,55,0,0" VerticalAlignment="Top" Width="481" FontSize="24" Grid.Column="0" FontWeight="Bold"/>
+        <ListBox Name="lboxVidRepair" Margin="368,97,41,34" SelectionChanged="lboxVidRepair_SelectionChanged"/>
+    </Grid>
+</Page>
